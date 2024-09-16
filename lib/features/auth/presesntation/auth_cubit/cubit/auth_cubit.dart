@@ -1,19 +1,21 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:first_app/features/auth/presesntation/auth_cubit/cubit/auth_state.dart';
+import 'package:first_app/features/auth/presesntation/view/widgets/TermsAndConditionWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
-  late String? firstName;
-  late String? lastName;
-  late String? emailAddress;
-  late String? password;
+  String? firstName;
+  String? lastName;
+  String? emailAddress;
+  String? password;
+  bool? termsAndConditionCheck = false;
+  GlobalKey<FormState> signInKey = GlobalKey();
   createUserWithEmailAndPassword() async {
     try {
       emit(SignInLoadingState());
-      final credential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailAddress!,
         password: password!,
       );
@@ -28,5 +30,10 @@ class AuthCubit extends Cubit<AuthState> {
     } catch (e) {
       emit(SignInErrorState(error: e.toString()));
     }
+  }
+
+  updateTermsAndConditionCheck({required newValue}) {
+    termsAndConditionCheck = newValue;
+    emit(TermsAndConditionUpdateState());
   }
 }

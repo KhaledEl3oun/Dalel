@@ -11,3 +11,5 @@ final class SignInErrorState extends AuthState {
 
   SignInErrorState({required this.error});
 }
+
+final class TermsAndConditionUpdateState extends AuthState {}

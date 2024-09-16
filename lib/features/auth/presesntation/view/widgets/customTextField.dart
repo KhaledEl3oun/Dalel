@@ -4,7 +4,11 @@ import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField(
-      {super.key, required this.text, required this.bottom,this.onChanged,this.onFieldSubmitted});
+      {super.key,
+      required this.text,
+      required this.bottom,
+      this.onChanged,
+      this.onFieldSubmitted});
   final String text;
   final double bottom;
   final Function(String)? onChanged;
@@ -14,6 +18,15 @@ class CustomTextFormField extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(left: 8, right: 8, top: 14, bottom: bottom),
       child: TextFormField(
+        
+        validator: (value) {
+          if (value!.isEmpty) {
+            return "this field is required";
+          } else {
+           return null;
+          }
+        
+        },
         onChanged: onChanged,
         onFieldSubmitted: onFieldSubmitted,
         decoration: InputDecoration(
