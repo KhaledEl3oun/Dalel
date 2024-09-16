@@ -1,5 +1,6 @@
 import 'package:first_app/core/widget/customBtn.dart';
 import 'package:first_app/features/auth/presesntation/view/widgets/TermsAndConditionWidget.dart';
+import 'package:first_app/features/auth/presesntation/view/widgets/customSignUpForm.dart';
 import 'package:first_app/features/auth/presesntation/view/widgets/customTextField.dart';
 import 'package:first_app/features/auth/presesntation/view/widgets/registerFooter.dart';
 import 'package:first_app/features/auth/presesntation/view/widgets/welcomeText.dart';
@@ -16,53 +17,29 @@ class RegisterView extends StatefulWidget {
 class _RegisterviewState extends State<RegisterView> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: EdgeInsets.symmetric(horizontal: 16),
         child: CustomScrollView(
           slivers: [
-            const SliverToBoxAdapter(
+            SliverToBoxAdapter(
               child: Gap(122),
             ),
-            const SliverToBoxAdapter(
+            SliverToBoxAdapter(
               child: WlecomeText(),
             ),
-            const SliverToBoxAdapter(
+            SliverToBoxAdapter(
+              child: CustomSignUpForm(),
+            ),
+            SliverToBoxAdapter(
               child: Gap(34),
             ),
-            const SliverToBoxAdapter(
-              child: CustomTextField(
-                text: 'first name',
-                bottom: 14,
-              ),
-            ),
-            const SliverToBoxAdapter(
-              child: CustomTextField(
-                text: 'last name',
-                bottom: 14,
-              ),
-            ),
-            const SliverToBoxAdapter(
-              child: CustomTextField(
-                text: 'email address',
-                bottom: 14,
-              ),
-            ),
-            const SliverToBoxAdapter(
-              child: CustomTextField(text: 'password', bottom: 0),
-            ),
-            const SliverToBoxAdapter(child: TermsAndConditionWidget()),
-            const SliverToBoxAdapter(child: Gap(77)),
-            SliverToBoxAdapter(
-                child: Custombtn(
-              text: 'Sign Up',
-              onPressed: () {},
-            )),
-            const SliverToBoxAdapter(child: Gap(16)),
-            const SliverToBoxAdapter(child: RegisterFooter()),
+            SliverToBoxAdapter(child: Gap(16)),
+            SliverToBoxAdapter(child: RegisterFooter()),
           ],
         ),
       ),
     );
   }
 }
+

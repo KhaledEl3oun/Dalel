@@ -14,12 +14,13 @@ class splashView extends StatefulWidget {
 class _splashViewState extends State<splashView> {
   @override
   void initState() {
-   bool isVisitedOnBoardingView = getIt<CacheHelper>().getData(key: "isVisitedOnBoardingView")?? false;
-   if (isVisitedOnBoardingView == true) {
-      delayNavigate(context, "/signIn");
-   } else {
-      delayNavigate(context,"/onBoarding");      
-   }
+    bool isVisitedOnBoardingView =
+        getIt<CacheHelper>().getData(key: "isVisitedOnBoardingView") ?? false;
+    if (isVisitedOnBoardingView == true) {
+      delayNavigate(context, "/register");
+    } else {
+      delayNavigate(context, "/onBoarding");
+    }
     super.initState();
   }
 
